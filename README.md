@@ -1,24 +1,50 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
+| Column              | Type   | Options                  |
+| ------------------- | ------ | ------------------------ |
+| email               | string | null: false unique: true |
+| encrypted           | string | null: false              |
+| name                | string | null: false              |
+| family_name         | text   | null: false              |
+| first_name          | text   | null: false              |
+| family_name_k       | text   | null: false              |
+| first_name_k        | text   | null: false              |
+| birthday            | text   | null: false              |
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+### Association
+- has_many :prototypes
 
-* Configuration
 
-* Database creation
+## items テーブル
+| Column             | Type       | Options                       |
+| ------------------ | ---------- | ----------------------------- |
+| title              | string     | null: false                   |
+| explanation        | text       | null: false                   |
+| category           | text       | null: false                   |
+| quality            | text       | null: false                   |
+| delivery_charge    | text       | null: false                   |
+| source             | text       | null: false                   |
+| number_of_days     | text       | null: false                   |
+| price              | integer    | null: false                   |
+| user               | references | null: false foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :users
+- has_one :destination
 
-* How to run the test suite
+## destinations テーブル
+| Column                 | Type       | Options                       |
+| ---------------------- | ---------- | ----------------------------- |
+| post_code              | integer    | null: false                   |
+| prefectures            | text       | null: false                   |
+| city                   | text       | null: false                   |
+| street_address         | text       | null: false                   |
+| building_name          | text       | null: false                   |
+| telephone_number       | integer    | null: false                   |
+| item                   | references | null: false foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :item
