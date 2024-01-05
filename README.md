@@ -22,11 +22,11 @@
 | ------------------ | ---------- | ----------------------------- |
 | title              | string     | null: false                   |
 | explanation        | text       | null: false                   |
-| category           | genre_id   | null: false                   |
-| quality            | genre_id   | null: false                   |
-| delivery_charge    | genre_id   | null: false                   |
-| source             | genre_id   | null: false                   |
-| number_of_days     | genre_id   | null: false                   |
+| category_id        | integer    | null: false                   |
+| quality_id         | integer    | null: false                   |
+| delivery_charge_id | integer    | null: false                   |
+| source_id          | integer    | null: false                   |
+| number_of_days_id  | integer    | null: false                   |
 | price              | integer    | null: false                   |
 | user               | references | null: false foreign_key: true |
 
@@ -38,16 +38,16 @@
 ## destinations テーブル
 | Column                 | Type       | Options                       |
 | ---------------------- | ---------- | ----------------------------- |
-| post_code              | genre_id   | null: false                   |
-| prefectures            | genre_id   | null: false                   |
+| post_code_id           | integer    | null: false                   |
+| prefecture_id          | integer    | null: false                   |
 | city                   | string     | null: false                   |
 | street_address         | string     | null: false                   |
-| building_name          | text       |                               |
+| building_name          | string     |                               |
 | telephone_number       | string     | null: false                   |
 | buy                    | references | null: false foreign_key: true |
 
 ### Association
-- has_one :buy
+- belongs_to :buy
 
 
 ## buys テーブル
@@ -59,7 +59,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :destination
+- has_one :destination
 
 itemの購入記録は１つのみ
 userの購入記録はたくさんあっていい
