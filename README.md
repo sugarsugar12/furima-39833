@@ -4,18 +4,17 @@
 | Column              | Type    | Options                  |
 | ------------------- | ------- | ------------------------ |
 | email               | string  | null: false unique: true |
-| password            | string  | null: false              |
+| encrypted_password  | string  | null: false              |
 | name                | string  | null: false              |
-| family_name         | text    | null: false              |
-| first_name          | text    | null: false              |
-| family_name_k       | text    | null: false              |
-| first_name_k        | text    | null: false              |
-| birthday            | integer | null: false              |
+| family_name         | string  | null: false              |
+| first_name          | string  | null: false              |
+| family_name_k       | string  | null: false              |
+| first_name_k        | string  | null: false              |
+| birthday            | date    | null: false              |
 
 ### Association
 - has_many :items
 - has_many :buys
-- has_many :destinations
 
 
 ## items テーブル
@@ -23,11 +22,11 @@
 | ------------------ | ---------- | ----------------------------- |
 | title              | string     | null: false                   |
 | explanation        | text       | null: false                   |
-| category           | text       | null: false                   |
-| quality            | text       | null: false                   |
-| delivery_charge    | text       | null: false                   |
-| source             | text       | null: false                   |
-| number_of_days     | text       | null: false                   |
+| category           | genre_id   | null: false                   |
+| quality            | genre_id   | null: false                   |
+| delivery_charge    | genre_id   | null: false                   |
+| source             | genre_id   | null: false                   |
+| number_of_days     | genre_id   | null: false                   |
 | price              | integer    | null: false                   |
 | user               | references | null: false foreign_key: true |
 
@@ -39,18 +38,16 @@
 ## destinations テーブル
 | Column                 | Type       | Options                       |
 | ---------------------- | ---------- | ----------------------------- |
-| post_code              | string     | null: false                   |
-| prefectures            | text       | null: false                   |
+| post_code              | genre_id   | null: false                   |
+| prefectures            | genre_id   | null: false                   |
 | city                   | string     | null: false                   |
 | street_address         | string     | null: false                   |
+| building_name          | text       |                               |
 | telephone_number       | string     | null: false                   |
-| user                   | references | null: false foreign_key: true |
+| buy                    | references | null: false foreign_key: true |
 
 ### Association
-- belongs_to :user
-
-そのitemの配送先ではなく
-そのitemを買ったuserの配送先
+- has_one :buy
 
 
 ## buys テーブル
@@ -62,6 +59,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :destination
 
 itemの購入記録は１つのみ
 userの購入記録はたくさんあっていい
