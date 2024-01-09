@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'passwordが6文字以上でないと登録できない' do
-        @user.password = 'aaaaa'
+        @user.password = 'aaaa1'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
       end
