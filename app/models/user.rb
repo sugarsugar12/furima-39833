@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :birthday, presence: true
 
-  validates :family_name, presence: true, format: { with: /\A[ぁ-んー－]+\z/, message: 'is invalid. Input full-width katakana characters'}
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んー－]+\z/, message: 'is invalid. Input full-width katakana characters'}
+  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width katakana characters'}
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width katakana characters'}
   validates :family_name_k, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'is invalid. Input full-width katakana characters'}
   validates :first_name_k, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'is invalid. Input full-width katakana characters'}
 
