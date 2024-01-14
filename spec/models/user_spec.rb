@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe User, type: :model do
   describe '新規登録' do
     before do
@@ -101,7 +100,7 @@ RSpec.describe User, type: :model do
       it 'passwordが6文字以上でないと登録できない' do
         @user.password = 'aaaa1'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password is invalid. Include both letters and numbers')
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
       it 'passwordが英字のみでは登録できない' do
