@@ -31,31 +31,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが空だと保存できないこと' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'quality_idが空だと保存できないこと' do
-        @item.quality_id = ''
+        @item.quality_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Quality can't be blank")
       end
 
       it 'delivery_charge_idが空だと保存できないこと' do
-        @item.delivery_charge_id = ''
+        @item.delivery_charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
       end
 
       it 'source_idが空だと保存できないこと' do
-        @item.source_id = ''
+        @item.source_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Source can't be blank")
       end
 
       it 'number_of_day_idが空だと保存できないこと' do
-        @item.number_of_day_id = ''
+        @item.number_of_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Number of day can't be blank")
       end
