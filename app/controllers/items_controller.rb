@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items=Item.all.order(created_at: :desc)
+    #allがなくても可
   end
 
   def new
