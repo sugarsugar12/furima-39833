@@ -12,7 +12,6 @@ class DestinationsController < ApplicationController
   end
   
   def create
-    #binding.pry
     @destination_buy = DestinationBuy.new(order_params)
     
      if @destination_buy.valid?
@@ -36,7 +35,6 @@ class DestinationsController < ApplicationController
     end
 
     def pay_item
-      #binding.pry
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
       Payjp::Charge.create(
         amount: @item.price,  

@@ -55,7 +55,7 @@ RSpec.describe DestinationBuy, type: :model do
         @destination_buy.valid?
         expect(@destination_buy.errors.full_messages).to include("Telephone number is invalid. Input only numbers")
       end
-      it 'telephone_numberが11桁以上では保存できないこと' do
+      it 'telephone_numberが12桁以上では保存できないこと' do
         @destination_buy.telephone_number = '090123456789'
         @destination_buy.valid?
         expect(@destination_buy.errors.full_messages).to include("Telephone number is invalid. Input only numbers")
