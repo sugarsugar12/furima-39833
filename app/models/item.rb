@@ -12,11 +12,11 @@ class Item < ApplicationRecord
   validates :number_of_day_id, presence: true
   validates :price, presence: true
   validates :image, presence: true
-
-  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
-    validates :price,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999},
-               presence: { message: "can't be blank"}
-  end
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price, format: { with: /\A[0-9]+\z/ }
+  
+  
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :quality
